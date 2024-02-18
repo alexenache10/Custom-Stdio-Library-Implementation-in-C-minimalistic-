@@ -1,11 +1,14 @@
-Pentru inceput, precizez faptul ca implementarea si codul propriu-zis a fost scris dupa ce am citit cum trebuie cerinta si am inteles ce trebuie facut (inteles conceptul de buffering, ce trebuie realizat cand se executa o operatie de scriere dupa o operatie de citire si vice-versa, etc).
-Campurile structurii SO_FILE au fost adaugate pe parcursul implementarii, in functie de necesitati si de conditiile problemei, iar bibliotecle incluse au fost copiate direct de la celelalte exercitii realizate (pana sa trec la implementarea bibliotecii).
-So_fflush: implementata precum a fost specificata in cerinta, adica golim bufferul in fisier doar daca venim dintr-o operatie de scriere, altfel doar resetam cursorul ce „pointeaza” la buffer.
- So_fseek: am introdus un fflush pentru a goli bufferul in fisier daca venim dintr-o operatie de scriere pentru a realiza un lseek real si valid.
-So_fgetc: pe langa cerintele din enunt, am adaugat in plus in conditia mare de aducere a datelor din fisier in buffer si anume: la fiecare citire din fisier tin cont cati octeti am adus din fisier intr-o variabila bufferSize, iar cand acel cursor al bufferului va fi egal cu acest bufferSize, inseamna ca trebuie sa aducem din nou date din fisier.
-So_fputc: pe langa cerintele din enunt, a trebuit „jonglat” testul special de fwrite. Sa fiu sincer, am preluat urmatoarea informatie de la colegi in pauze si la ore cand vorbeam despre tema, nu eram constient de acest lucru: apelul de sistem write nu asigura scrierea atator octeti cati sunt specificati, asa ca am implementat o bucla ce asigura (forteaza) scrierea intregului buffer in fisier, insa chiar daca ce am implementat mi se pare logic, nu imi functioneaza testul. Am tot facut printf-uri, insa nu imi dau seama de ce nu functioneaza.
-Functiile so_fread si so_fwrite functioneaza pe baza functiilor so_fgetc si so_fputc, nu contin nimic special, doar am urmat cerintele.
-So_popen: Am mers in functie de tip pe 2 cazuri (w si r), procesul copil executa comanda ceruta si redirecteaza iesirea / intrarea standard, urmand ca apoi sa initiez fisierul deschis cu popen (atributele, pid procesului parinte si filedescriptorul in functie de ce tip avem)
+Description:
+This project is a minimal implementation of a custom stdio library in C, designed to facilitate file handling operations. The library implements the SO_FILE structure, akin to the FILE structure in the standard C library, along with functions for reading, writing, and buffering. Key functionalities include file opening, closing, reading, writing, positioning the file cursor, and buffering operations. The project also includes process execution functionalities using popen and pclose for seamless interaction with external commands.
 
+Features:
 
+Custom SO_FILE structure to represent opened files.
+File operations including open, close, read, write, seek, tell, and buffering.
+Process execution capabilities with popen and pclose.
+Implementation adheres to POSIX standards for compatibility across Linux systems.
+Implementation Details:
 
+Utilizes POSIX functions such as open, read, and write for file operations.
+Follows C standard guidelines for file handling and process execution.
+Maintains a default buffer size of 4096 bytes for efficient I/O operations.
