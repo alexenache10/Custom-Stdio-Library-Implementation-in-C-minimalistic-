@@ -2,13 +2,19 @@ Description:
 This project is a minimal implementation of a custom stdio library in C, designed to facilitate file handling operations. The library implements the SO_FILE structure, akin to the FILE structure in the standard C library, along with functions for reading, writing, and buffering. Key functionalities include file opening, closing, reading, writing, positioning the file cursor, and buffering operations. The project also includes process execution functionalities using popen and pclose for seamless interaction with external commands.
 
 Features:
-
 Custom SO_FILE structure to represent opened files.
 File operations including open, close, read, write, seek, tell, and buffering.
 Process execution capabilities with popen and pclose.
 Implementation adheres to POSIX standards for compatibility across Linux systems.
-Implementation Details:
 
+Implementation Details:
 Utilizes POSIX functions such as open, read, and write for file operations.
 Follows C standard guidelines for file handling and process execution.
 Maintains a default buffer size of 4096 bytes for efficient I/O operations.
+
+Usage:
+Clone the repository.
+Compile the dynamic library using provided Makefile.
+Include so_stdio.h header file in your C program.
+Link against the compiled library during compilation.
+Refer to the documentation and examples for usage details.
